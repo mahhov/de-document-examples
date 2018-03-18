@@ -19,9 +19,10 @@ const writeFile = (path, content) =>
     });
 
 readFile(fileIn).then(contents => {
-    contents.replace(/!example ((\w|.)+)/g, (_, exampleName) => {
-        let exampleFile = path.isAbsolute(exampleName) ? exampleName : path.join(exampleDir, exampleName);
-        return exampleFile;
+    let result = contents.replace(/!example ((\w|.)+)/g, (_, exampleName) => {
+        let examplePath = path.isAbsolute(exampleName) ? exampleName : path.join(exampleDir, exampleName);
+        let resolvedPath = path.resolve(examplePath);
+        return require(resolvedPath);
     });
 
     writeFile(fileOut, result);

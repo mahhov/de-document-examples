@@ -1,6 +1,6 @@
 const ae = require('../src/Example');
 
-ae.given(() => {
+module.exports = ae.given(() => {
     let dog = {
         size: 3,
         sound: 'bark',

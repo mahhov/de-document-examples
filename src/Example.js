@@ -14,9 +14,7 @@ class Example {
         let whenBlock = Example.getFuncBlock('When', whenFunc, true);
         let thenBlock = Example.getObjBlock('Then', thenObj);
 
-        let x = `${givenBlock}${whenBlock}${thenBlock}`;
-        console.log(x);
-        return x;
+        return `${givenBlock}${whenBlock}${thenBlock}`;
     }
 
     static getFuncBlock(title, func, hasReturn) {

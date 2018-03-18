@@ -1,0 +1,14 @@
+{
+  "name": "de-document-examples",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "author": "mahhov",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahhov/de-document-example"
+  }
+}

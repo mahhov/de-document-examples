@@ -4,14 +4,28 @@ const fileIn = process.argv[2];
 const fileOut = process.argv[3];
 const exampleDir = path.dirname(fileIn);
 
-fs.readFile(fileIn, 'utf8', (err, data) => {
-    err && console.log(err);
-    let result = data.replace(/!example ((\w|.)+)/g, (_, exampleName) => {
+const readFile = path =>
+    new Promise((resolve, reject) => {
+        fs.readFile(path, 'utf8', (err, contents) => {
+            err && reject(err) || resolve(contents);
+        })
+    });
+
+const writeFile = (path, content) =>
+    new Promise((resolve, reject) => {
+        fs.writeFile(path, content, 'utf8', err => {
+            err && reject(err) || resolve();
+        })
+    });
+
+readFile(fileIn).then(contents => {
+    contents.replace(/!example ((\w|.)+)/g, (_, exampleName) => {
         let exampleFile = path.isAbsolute(exampleName) ? exampleName : path.join(exampleDir, exampleName);
         return exampleFile;
     });
 
-    fs.writeFile(fileOut, result, 'utf8', err => {
-        err && console.log(err);
-    });
+    writeFile(fileOut, result);
+
+}).catch(err => {
+    console.log(err);
 });

@@ -1,20 +1,26 @@
 class Example {
-    constructor(givenFunc) {
-        this.givenFunc = givenFunc;
+    constructor(title) {
+        this.title = title;
     }
 
-    static given(givenFunc) {
-        return new Example(givenFunc);
+    given(givenFunc) {
+        this.givenFunc = givenFunc;
+        return this;
     }
 
     when(whenFunc) {
         let thenObj = whenFunc(this.givenFunc());
 
+        let titleBlock = Example.getTitleBlock(this.title);
         let givenBlock = Example.getFuncBlock('Given', this.givenFunc, true);
         let whenBlock = Example.getFuncBlock('When', whenFunc, true);
         let thenBlock = Example.getObjBlock('Then', thenObj);
 
-        return `${givenBlock}${whenBlock}${thenBlock}`;
+        return `${titleBlock}${givenBlock}${whenBlock}${thenBlock}`;
+    }
+
+    static getTitleBlock(title) {
+        return `## ${title}\n\n`;
     }
 
     static getFuncBlock(title, func, hasReturn) {

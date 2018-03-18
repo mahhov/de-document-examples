@@ -1,3 +1,3 @@
 const Example = require('./example');
 
-module.exports = Example;
+module.exports = title => new Example(title);

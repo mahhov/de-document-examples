@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const example = require('./index');
 const fileIn = process.argv[2];
 const fileOut = process.argv[3];
 const exampleDir = path.dirname(fileIn);
@@ -19,10 +20,16 @@ const writeFile = (path, content) =>
     });
 
 readFile(fileIn).then(contents => {
-    let result = contents.replace(/!example ((\w|.)+)/g, (_, exampleName) => {
+    let result = contents.replace(/!example\[(Example|Array)\] ((\w|.)+)/g, (_, exampleFormat, exampleName) => {
         let examplePath = path.isAbsolute(exampleName) ? exampleName : path.join(exampleDir, exampleName);
         let resolvedPath = path.resolve(examplePath);
-        return require(resolvedPath);
+        if (exampleFormat === 'Array') {
+            let [title, given, when] = require(resolvedPath);
+            return example(title).given(given).when(when);
+        } else if (exampleFormat === 'Example')
+            return require(resolvedPath);
+        else
+            return '';
     });
 
     writeFile(fileOut, result);

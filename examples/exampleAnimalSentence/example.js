@@ -9,4 +9,9 @@ let when = animals => {
     return sentence;
 };
 
-module.exports = ['Animal Example #1', given, when];
+module.exports = {
+    title: 'Animal Example #1',
+    given: [given, 'func', 'excludeReturn'],
+    when: [when, 'func', 'excludeReturn'],
+    then: [when(given()), 'obj']
+};

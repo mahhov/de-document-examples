@@ -2,6 +2,28 @@
 
 this generates a sentence about animals
 
-# examples
+# example 1 - template
 
-!example[Array] example.js
+!example[example.js]
+
+# example 2 - custom
+
+### given
+
+!example[example.js given]
+
+### when
+
+!example[example.js when]
+
+### then
+
+!example[example.js then]
+
+# example 3 - inject
+
+!example[injectMarkdownTemplate.md]
+
+# exmaple 4 - parmaterized
+
+!example[parameterizedMarkdownTemplate.md]

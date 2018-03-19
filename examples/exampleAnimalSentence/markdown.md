@@ -1,28 +1,29 @@
 # my animal sentence project
 
-this generates a sentence about animals
+demo of how we can generate and auto update example snippets in documentation
 
-# examples
+# example 1 - template
 
-## Animal Example #1
+!example[example.js]
 
-### Given
+# example 2 - custom
 
-```
-    let animals = ['dog', 'cat', 'mouse'];
-    animals[0] = 'alligator';
-```
+### given
 
-### When
+!example[example.js given]
 
-```
-    let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
-```
+### when
 
-### Then
+!example[example.js when]
 
-```
-"the alligator watched the cat chase the mouse"
-```
+### then
 
+!example[example.js then]
 
+# example 3 - inject
+
+!example[injectMarkdownTemplate.md]
+
+# exmaple 4 - parmaterized
+
+!example[parameterizedMarkdownTemplate.md]

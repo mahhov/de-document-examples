@@ -1,6 +1,6 @@
 # hi there elephant
 
-## Animals
+## Animal Example #2
 
 ### Given
 
@@ -25,7 +25,7 @@
 
 # hi there hippo
 
-## Animals
+## Animal Example #1
 
 ### Given
 

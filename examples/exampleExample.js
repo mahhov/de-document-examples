@@ -1,6 +1,6 @@
 const ae = require('../src/index');
 
-module.exports = ae('Animals')
+module.exports = ae('Animal Example #2')
     .given(() => {
         let animals = ['dog', 'cat', 'mouse'];
         animals[0] = 'eggplant';

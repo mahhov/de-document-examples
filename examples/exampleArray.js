@@ -9,4 +9,4 @@ let when = animals => {
     return sentence;
 };
 
-module.exports = ['Animals', given, when];
+module.exports = ['Animal Example #1', given, when];

@@ -1,6 +1,6 @@
-const ae = require('../src/index');
+const ec = require('../../src/exampleCreator');
 
-module.exports = ae('Animal Example #2')
+module.exports = ec('Animal Example #2')
     .given(() => {
         let animals = ['dog', 'cat', 'mouse'];
         animals[0] = 'eggplant';

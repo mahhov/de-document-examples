@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const example = require('./index');
+const ec = require('./exampleCreator');
 const fileIn = process.argv[2];
 const fileOut = process.argv[3];
 const exampleDir = path.dirname(fileIn);
@@ -25,7 +25,7 @@ readFile(fileIn).then(contents => {
         let resolvedPath = path.resolve(examplePath);
         if (exampleFormat === 'Array') {
             let [title, given, when] = require(resolvedPath);
-            return example(title).given(given).when(when);
+            return ec(title).given(given).when(when);
         } else if (exampleFormat === 'Example')
             return require(resolvedPath);
         else

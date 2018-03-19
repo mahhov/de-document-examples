@@ -2,7 +2,7 @@
   "name": "de-document-examples",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/generator.js",
   "scripts": {},
   "author": "mahhov",
   "license": "ISC",

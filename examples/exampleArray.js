@@ -1,5 +1,6 @@
 let given = () => {
     let animals = ['dog', 'cat', 'mouse'];
+    animals[0] = 'alligator';
     return animals;
 };
 

@@ -5,23 +5,20 @@
 ### Given
 
 ```
-
         let animals = ['dog', 'cat', 'mouse'];
-        
+        animals[0] = 'eggplant';
 ```
 
 ### When
 
 ```
-
         let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
-        
 ```
 
 ### Then
 
 ```
-"the dog watched the cat chase the mouse"
+"the eggplant watched the cat chase the mouse"
 ```
 
 
@@ -33,23 +30,20 @@
 ### Given
 
 ```
-
     let animals = ['dog', 'cat', 'mouse'];
-    
+    animals[0] = 'alligator';
 ```
 
 ### When
 
 ```
-
     let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
-    
 ```
 
 ### Then
 
 ```
-"the dog watched the cat chase the mouse"
+"the alligator watched the cat chase the mouse"
 ```
 
 

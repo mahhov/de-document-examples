@@ -35,7 +35,7 @@ class Example {
 
     static getFuncInner(func, hasReturn) {
         let funcString = func.toString();
-        let regex = hasReturn ? /{((.|\s)*)\breturn\b(.|\s)*}/ : /{((.|\s)*)}/;
+        let regex = hasReturn ? /{\n*((.|\s)*)\n\s*\breturn\b(.|\s)*}/ : /{\n*((.|\s)*)\n\s*}/;
         return funcString.match(regex)[1];
     }
 

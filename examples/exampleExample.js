@@ -1,38 +1,10 @@
 const ae = require('../src/index');
 
-module.exports = ae('Animal Safety')
+module.exports = ae('Animals')
     .given(() => {
-        let dog = {
-            size: 3,
-            sound: 'bark',
-            planet: 'earth',
-            description: 'smelly'
-        };
-
-        let cat = {
-            size: 3,
-            sound: 'purr',
-            planet: 'earth',
-            description: 'tasty'
-        };
-
-        let joojoo = {
-            size: 8,
-            sound: 'joououooouuuiiuuouo',
-            planet: 'Jupiter',
-            description: 'superior being',
-        };
-
-        let animals = [dog, cat, joojoo];
-
+        let animals = ['dog', 'cat', 'mouse'];
         return animals;
     }).when(animals => {
-        animals.forEach(animal => {
-            if (animal.planet === 'earth')
-                animal.safe = true;
-            else
-                animal.safe = animal.size < 6;
-        });
-
-        return animals;
+        let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
+        return sentence;
     });

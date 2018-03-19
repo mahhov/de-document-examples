@@ -1,34 +1,12 @@
 # hi there elephant
 
-## Animal Safety
+## Animals
 
 ### Given
 
 ```
 
-        let dog = {
-            size: 3,
-            sound: 'bark',
-            planet: 'earth',
-            description: 'smelly'
-        };
-
-        let cat = {
-            size: 3,
-            sound: 'purr',
-            planet: 'earth',
-            description: 'tasty'
-        };
-
-        let joojoo = {
-            size: 8,
-            sound: 'joououooouuuiiuuouo',
-            planet: 'Jupiter',
-            description: 'superior being',
-        };
-
-        let animals = [dog, cat, joojoo];
-
+        let animals = ['dog', 'cat', 'mouse'];
         
 ```
 
@@ -36,77 +14,27 @@
 
 ```
 
-        animals.forEach(animal => {
-            if (animal.planet === 'earth')
-                animal.safe = true;
-            else
-                animal.safe = animal.size < 6;
-        });
-
+        let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
         
 ```
 
 ### Then
 
 ```
-[
-  {
-    "size": 3,
-    "sound": "bark",
-    "planet": "earth",
-    "description": "smelly",
-    "safe": true
-  },
-  {
-    "size": 3,
-    "sound": "purr",
-    "planet": "earth",
-    "description": "tasty",
-    "safe": true
-  },
-  {
-    "size": 8,
-    "sound": "joououooouuuiiuuouo",
-    "planet": "Jupiter",
-    "description": "superior being",
-    "safe": false
-  }
-]
+"the dog watched the cat chase the mouse"
 ```
 
 
 
 # hi there hippo
 
-## Animal Safety
+## Animals
 
 ### Given
 
 ```
 
-    let dog = {
-        size: 3,
-        sound: 'bark',
-        planet: 'earth',
-        description: 'smelly'
-    };
-
-    let cat = {
-        size: 3,
-        sound: 'purr',
-        planet: 'earth',
-        description: 'tasty'
-    };
-
-    let joojoo = {
-        size: 8,
-        sound: 'joououooouuuiiuuouo',
-        planet: 'Jupiter',
-        description: 'superior being',
-    };
-
-    let animals = [dog, cat, joojoo];
-
+    let animals = ['dog', 'cat', 'mouse'];
     
 ```
 
@@ -114,42 +42,14 @@
 
 ```
 
-    animals.forEach(animal => {
-        if (animal.planet === 'earth')
-            animal.safe = true;
-        else
-            animal.safe = animal.size < 6;
-    });
-
+    let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
     
 ```
 
 ### Then
 
 ```
-[
-  {
-    "size": 3,
-    "sound": "bark",
-    "planet": "earth",
-    "description": "smelly",
-    "safe": true
-  },
-  {
-    "size": 3,
-    "sound": "purr",
-    "planet": "earth",
-    "description": "tasty",
-    "safe": true
-  },
-  {
-    "size": 8,
-    "sound": "joououooouuuiiuuouo",
-    "planet": "Jupiter",
-    "description": "superior being",
-    "safe": false
-  }
-]
+"the dog watched the cat chase the mouse"
 ```
 
 

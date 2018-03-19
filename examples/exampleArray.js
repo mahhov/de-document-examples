@@ -4,14 +4,8 @@ let given = () => {
 };
 
 let when = animals => {
-    animals.forEach(animal => {
-        if (animal.planet === 'earth')
-            animal.safe = true;
-        else
-            animal.safe = animal.size < 6;
-    });
-
-    return animals;
+    let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
+    return sentence;
 };
 
-module.exports = ['Animal Safety', given, when];
+module.exports = ['Animals', given, when];

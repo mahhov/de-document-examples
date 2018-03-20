@@ -2,8 +2,10 @@
   "name": "de-document-examples",
   "version": "0.0.1",
   "description": "",
-  "main": "src/generator.js",
   "scripts": {},
+  "bin": {
+    "document": "src/index.js"
+  },
   "author": "mahhov",
   "license": "ISC",
   "repository": {

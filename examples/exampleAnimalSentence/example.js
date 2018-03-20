@@ -11,7 +11,7 @@ let when = animals => {
 
 module.exports = {
     title: 'Animal Example #1',
-    given: [given, 'func', 'excludeReturn'],
-    when: [when, 'func', 'excludeReturn'],
-    then: [when(given()), 'obj']
+    given: {func: given, excludeReturn: true},
+    when: {func: when, excludeReturn: true},
+    then: {obj: when(given())}
 };

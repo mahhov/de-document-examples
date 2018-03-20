@@ -24,7 +24,7 @@ class Example {
     }
 
     static getFuncBlock(title, func, hasReturn) {
-        let funcInner = Example.getFuncInner(func, hasReturn);
+        let funcInner = Example.getFuncSnippet(func, hasReturn);
         return Example.getBlock(title, funcInner);
     }
 

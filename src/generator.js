@@ -3,7 +3,7 @@ const path = require('path');
 const ec = require('./exampleCreator');
 const fileIn = process.argv[2];
 const fileOut = process.argv[3];
-const exampleDir = path.dirname(fileIn);
+const fileInDir = path.dirname(fileIn);
 
 const readFile = path =>
     new Promise((resolve, reject) => {
@@ -19,17 +19,29 @@ const writeFile = (path, content) =>
         })
     });
 
+let resolvePath = inPath => {
+    let expandedPath = path.isAbsolute(inPath) ? inPath : path.join(fileInDir, inPath);
+    return path.resolve(expandedPath);
+};
+
+let requirePathMem = {};
+
+let requirePath = resolvedPath => {
+    return requirePathMem[resolvedPath] || (requirePathMem[resolvedPath] = require(resolvedPath));
+};
+
 readFile(fileIn).then(contents => {
-    let result = contents.replace(/!example\[(Example|Array)\] ((\w|.)+)/g, (_, exampleFormat, exampleName) => {
-        let examplePath = path.isAbsolute(exampleName) ? exampleName : path.join(exampleDir, exampleName);
-        let resolvedPath = path.resolve(examplePath);
-        if (exampleFormat === 'Array') {
-            let [title, given, when] = require(resolvedPath);
-            return ec(title).given(given).when(when);
-        } else if (exampleFormat === 'Example')
-            return require(resolvedPath);
-        else
-            return '';
+    let result = contents.replace(/!example\[(.*)\]/g, (_, paramsStr) => {
+        let [inPath, ...flags] = paramsStr.split(' ');
+        switch (path.extname(inPath)) {
+            case '.js':
+                let resolvedPath = resolvePath(inPath);
+                let requiredPath = requirePath(resolvedPath);
+                return ec(requiredPath, flags);
+            case '.md':
+            default:
+                return 'yet to support nested md / files';
+        }
     });
 
     writeFile(fileOut, result);

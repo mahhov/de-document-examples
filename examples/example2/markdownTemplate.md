@@ -1,6 +1,4 @@
-# my animal sentence project
-
-this generates a sentence about animals
+# examples
 
 # example 1 - template
 

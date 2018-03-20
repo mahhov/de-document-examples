@@ -1,20 +1,3 @@
-// let getTitleBlock = title =>
-//     `## ${title}\n\n`;
-//
-// let getFuncBlock = (title, func, excludeReturn) => {
-//     let funcSnippet = getFuncSnippet(func, excludeReturn);
-//     return getBlock(title, funcSnippet);
-// };
-//
-// let getObjBlock = (title, obj) => {
-//     let objSnippet = getObjSnippet(obj);
-//     return getBlock(title, objSnippet);
-// };
-//
-// let getBlock = (title, snippet) =>
-//     `### ${title}\n\n\`\`\`\n${snippet}\n\`\`\`\n\n`;
-//
-
 class JavascriptDoc {
     constructor(source, flags) {
         this.source = source;
@@ -22,9 +5,6 @@ class JavascriptDoc {
     };
 
     generate() {
-        if (!this.flags.length)
-            return 'yet to support no-flags js';
-
         let snippetData = this.source[this.flags[0]] || this.flags[0] === 'then' && this.createThenSnippetData();
         let snippet = JavascriptDoc.generateSnippet(snippetData);
         return JavascriptDoc.codeWrap(snippet);

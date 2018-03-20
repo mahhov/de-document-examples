@@ -24,24 +24,25 @@ let requirePath = resolvedPath =>
 let docFromFile = (dir, inPath, flags) => {
     const MarkdownDoc = require('./MarkdownDoc');
     const JavascriptDoc = require('./JavascriptDoc');
+    const JavascriptUnflaggedDoc = require('./JavascriptUnflaggedDoc');
 
-    flags = flags || [];
     let resolvedPath = resolvePath(dir, inPath);
+
     switch (path.extname(inPath)) {
         case '.js':
             let requiredPath = requirePath(resolvedPath);
-            return new JavascriptDoc(requiredPath, flags);
+            return !flags.length && new JavascriptUnflaggedDoc(requiredPath) || new JavascriptDoc(requiredPath, flags);
         case '.md':
         default:
             let contents = readFile(resolvedPath);
-            return new MarkdownDoc(dir, contents, flags)
+            return new MarkdownDoc(dir, contents, flags )
     }
 };
 
 let generate = (fileIn, fileOut) => {
     let fileInDir = path.dirname(fileIn);
     let fileName = path.basename(fileIn);
-    let doc = docFromFile(fileInDir, fileName, null);
+    let doc = docFromFile(fileInDir, fileName, []);
     writeFile(fileOut, doc.generate());
 };
 

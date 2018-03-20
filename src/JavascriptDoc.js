@@ -25,10 +25,14 @@ class JavascriptDoc {
         if (!this.flags.length)
             return 'yet to support no-flags js';
 
-        let snippetData = this.source[this.flags[0]];
+        let snippetData = this.source[this.flags[0]] || this.flags[0] === 'then' && this.createThenSnippetData();
         let snippet = JavascriptDoc.generateSnippet(snippetData);
         return JavascriptDoc.codeWrap(snippet);
     }
+
+    createThenSnippetData() {
+        return {obj: this.source.when.func(this.source.given.func)}
+    };
 
     static generateSnippet(snippetData) {
         if (snippetData.func) {

@@ -24,7 +24,7 @@ yet to support no-flags js
 ### then
 
 ```
-"the alligator watched the cat chase the mouse"
+"the undefined watched the undefined chase the undefined"
 ```
 
 # example 3 - inject
@@ -45,7 +45,7 @@ yet to support no-flags js
 ### then
 
 ```
-"the alligator watched the cat chase the mouse"
+"the undefined watched the undefined chase the undefined"
 ```
 
 
@@ -67,6 +67,6 @@ yet to support no-flags js
 ### then - parmaterized
 
 ```
-"the alligator watched the cat chase the mouse"
+"the undefined watched the undefined chase the undefined"
 ```
 

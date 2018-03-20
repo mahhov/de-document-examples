@@ -13,5 +13,5 @@ module.exports = {
     title: 'Animal Example #1',
     given: {func: given, excludeReturn: true},
     when: {func: when, excludeReturn: true},
-    then: {obj: when(given())}
+    // then: {obj: when(given())}
 };

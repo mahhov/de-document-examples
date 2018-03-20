@@ -1,51 +1,48 @@
 const fs = require('fs');
 const path = require('path');
-const ec = require('./exampleCreator');
-const fileIn = process.argv[2];
-const fileOut = process.argv[3];
-const fileInDir = path.dirname(fileIn);
 
-const readFile = path =>
-    new Promise((resolve, reject) => {
-        fs.readFile(path, 'utf8', (err, contents) => {
-            err && reject(err) || resolve(contents);
-        })
-    });
+let readFile = path =>
+    fs.readFileSync(path, 'utf8');
 
-const writeFile = (path, content) =>
+let writeFile = (path, content) =>
     new Promise((resolve, reject) => {
         fs.writeFile(path, content, 'utf8', err => {
             err && reject(err) || resolve();
         })
     });
 
-let resolvePath = inPath => {
-    let expandedPath = path.isAbsolute(inPath) ? inPath : path.join(fileInDir, inPath);
+let resolvePath = (dir, inPath) => {
+    let expandedPath = path.isAbsolute(inPath) ? inPath : path.join(dir, inPath);
     return path.resolve(expandedPath);
 };
 
 let requirePathMem = {};
 
-let requirePath = resolvedPath => {
-    return requirePathMem[resolvedPath] || (requirePathMem[resolvedPath] = require(resolvedPath));
+let requirePath = resolvedPath =>
+    (requirePathMem[resolvedPath] || (requirePathMem[resolvedPath] = require(resolvedPath)));
+
+let docFromFile = (dir, inPath, flags) => {
+    const MarkdownDoc = require('./MarkdownDoc');
+    const JavascriptDoc = require('./JavascriptDoc');
+
+    flags = flags || [];
+    let resolvedPath = resolvePath(dir, inPath);
+    switch (path.extname(inPath)) {
+        case '.js':
+            let requiredPath = requirePath(resolvedPath);
+            return new JavascriptDoc(requiredPath, flags);
+        case '.md':
+        default:
+            let contents = readFile(resolvedPath);
+            return new MarkdownDoc(dir, contents, flags)
+    }
 };
 
-readFile(fileIn).then(contents => {
-    let result = contents.replace(/!example\[(.*)\]/g, (_, paramsStr) => {
-        let [inPath, ...flags] = paramsStr.split(' ');
-        switch (path.extname(inPath)) {
-            case '.js':
-                let resolvedPath = resolvePath(inPath);
-                let requiredPath = requirePath(resolvedPath);
-                return ec(requiredPath, flags);
-            case '.md':
-            default:
-                return 'yet to support nested md / files';
-        }
-    });
+let generate = (fileIn, fileOut) => {
+    let fileInDir = path.dirname(fileIn);
+    let fileName = path.basename(fileIn);
+    let doc = docFromFile(fileInDir, fileName, null);
+    writeFile(fileOut, doc.generate());
+};
 
-    writeFile(fileOut, result);
-
-}).catch(err => {
-    console.log(err);
-});
+module.exports = {docFromFile, generate};

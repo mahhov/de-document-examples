@@ -1,11 +1,11 @@
 ### given - parmaterized
 
-!example[$1 given]
+!example[[0] [1]]
 
 ### when - parmaterized
 
-!example[$1 when]
+!example[[0] [2]]
 
 ### then - parmaterized
 
-!example[$1 then]
+!example[[0] [3]]

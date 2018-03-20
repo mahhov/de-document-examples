@@ -26,4 +26,4 @@ this generates a sentence about animals
 
 # exmaple 4 - parmaterized
 
-!example[parameterizedMarkdownTemplate.md]
+!example[parameterizedMarkdownTemplate.md example.js given when then]

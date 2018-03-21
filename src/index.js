@@ -7,6 +7,5 @@ const fileOut = process.argv[3];
 generator.generate(fileIn, fileOut);
 
 // todo
-// check for more usable errors to be thrown
 // finish readme
 // push & publish

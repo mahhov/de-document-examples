@@ -9,6 +9,7 @@ let double = list => {
 };
 
 module.exports = {
+    whatIsThis: {text: 'this is a simple exampe'},
     given: {func: given, excludeReturn: true},
     double: {func: double, excludeReturn: true},
     doubleThen: {obj: double(given())}

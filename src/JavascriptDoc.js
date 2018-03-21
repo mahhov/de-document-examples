@@ -9,8 +9,7 @@ class JavascriptDoc {
         if (!snippetData) {
             throw `cannot find flag ${this.flags[0]}`;
         }
-        let snippet = JavascriptDoc.generateSnippet(snippetData);
-        return JavascriptDoc.codeWrap(snippet);
+        return JavascriptDoc.generateSnippet(snippetData);
     }
 
     createThenSnippetData() {
@@ -21,11 +20,13 @@ class JavascriptDoc {
         if (snippetData.func) {
             let funcString = snippetData.func.toString();
             let regex = snippetData.excludeReturn ? /{\n*((.|\s)*)\n\s*\breturn\b(.|\s)*}/ : /{\n*((.|\s)*)\n\s*}/;
-            return funcString.match(regex)[1];
+            return JavascriptDoc.codeWrap(funcString.match(regex)[1]);
         } else if (snippetData.obj)
-            return JSON.stringify(snippetData.obj, null, 2);
+            return JavascriptDoc.codeWrap(JSON.stringify(snippetData.obj, null, 2));
+        else if (snippetData.text)
+            return snippetData.text;
         else
-            return '';
+            throw `data not of valid type: {func | obj | text}`
     }
 
     static  codeWrap(code) {

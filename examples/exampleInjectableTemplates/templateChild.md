@@ -1,3 +1,7 @@
+### Description
+
+!example[[0] description]
+
 ### Given
 
 !example[[0] given]

@@ -14,6 +14,7 @@ let add4 = list => {
 };
 
 module.exports = {
+    description: {text: 'multiplies by 4 and adds 4 to each element of an array'},
     given: {func: given, excludeReturn: true},
     step1: {func: quadruple, excludeReturn: true},
     step2: {func: add4, excludeReturn: true},

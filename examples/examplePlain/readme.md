@@ -1,4 +1,6 @@
-## Map & Filter
+## Double
+
+this is a simple exampe
 
 ### Given
 
@@ -19,5 +21,10 @@ let's say we do a map
 ### Then we get
 
 ```
-[2,4,6,8]
+[
+  2,
+  4,
+  6,
+  8
+]
 ```

@@ -1,5 +1,7 @@
 ## Double
 
+!example[arrays.js whatIsThis]
+
 ### Given
 
 let's say we have an array such as:

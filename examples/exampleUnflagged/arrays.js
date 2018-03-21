@@ -9,7 +9,7 @@ let lessThan3 = list => {
 };
 
 module.exports = {
-    title: 'Optional Title',
+    title: {text: 'Optional Title'},
     given: {func: given, excludeReturn: true},
     when: {func: lessThan3, excludeReturn: true}
 };

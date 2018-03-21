@@ -6,7 +6,7 @@ class JavascriptUnflaggedDoc extends JavascriptDoc {
     };
 
     generate() {
-        let titleBlock = JavascriptUnflaggedDoc.getTitleBlock(this.source.title);
+        let titleBlock = JavascriptUnflaggedDoc.getTitleBlock(this.source.title && this.source.title.text);
 
         let givenSnippet = JavascriptDoc.generateSnippet(this.source.given);
         let givenBlock = JavascriptUnflaggedDoc.getBlock('Given', givenSnippet);

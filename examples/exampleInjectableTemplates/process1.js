@@ -14,6 +14,7 @@ let add10 = list => {
 };
 
 module.exports = {
+    description: {text: 'multiplies by 3 and adds 10 to each element of an array'},
     given: {func: given, excludeReturn: true},
     step1: {func: tripple, excludeReturn: true},
     step2: {func: add10, excludeReturn: true},

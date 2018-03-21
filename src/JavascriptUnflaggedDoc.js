@@ -31,7 +31,7 @@ class JavascriptUnflaggedDoc extends JavascriptDoc {
     }
 
     static getBlock(title, snippet) {
-        return `### ${title}\n\n\`\`\`\n${snippet}\n\`\`\`\n\n`;
+        return `### ${title}\n\n${snippet}\n\n`;
     }
 }
 

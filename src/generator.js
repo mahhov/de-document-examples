@@ -1,8 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-let readFile = path =>
-    fs.readFileSync(path, 'utf8');
+let readFile = path => {
+    try {
+        return fs.readFileSync(path, 'utf8');
+    } catch (e) {
+        throw `file not found ${path}`;
+    }
+};
 
 let writeFile = (path, content) =>
     new Promise((resolve, reject) => {

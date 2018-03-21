@@ -6,6 +6,9 @@ class JavascriptDoc {
 
     generate() {
         let snippetData = this.source[this.flags[0]] || this.flags[0] === 'then' && this.createThenSnippetData();
+        if (!snippetData) {
+            throw `cannot find flag ${this.flags[0]}`;
+        }
         let snippet = JavascriptDoc.generateSnippet(snippetData);
         return JavascriptDoc.codeWrap(snippet);
     }

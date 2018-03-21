@@ -22,7 +22,7 @@ class JavascriptUnflaggedDoc extends JavascriptDoc {
     }
 
     static getTitleBlock(title) {
-        return `## ${title}\n\n`;
+        return title ? `## ${title}\n\n` : '';
     }
 
     static getFuncBlock(title, func, excludeReturn) {

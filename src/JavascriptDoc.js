@@ -11,7 +11,7 @@ class JavascriptDoc {
     }
 
     createThenSnippetData() {
-        return {obj: this.source.when.func(this.source.given.func)}
+        return {obj: this.source.when.func(this.source.given.func())}
     };
 
     static generateSnippet(snippetData) {

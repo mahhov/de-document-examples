@@ -1,3 +1,13 @@
+# Overview
+
+Automatically update markdown documentation with examples.
+
+# Syntax
+
+`!!example[a b c a443/ awer.]`
+
+# Examples
+
 ## Double
 
 !example[doubler.js whatIsThis]

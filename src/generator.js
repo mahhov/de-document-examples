@@ -48,7 +48,8 @@ let docFromFile = (dir, inPath, flags) => {
         case '.md':
         default:
             let contents = readFile(resolvedPath);
-            return new MarkdownDoc(dir, contents, flags)
+            let recursiveDir = path.dirname(resolvedPath);
+            return new MarkdownDoc(recursiveDir, contents, flags);
     }
 };
 

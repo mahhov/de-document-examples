@@ -19,7 +19,15 @@ let resolvePath = (dir, inPath) => {
 let requirePathMem = {};
 
 let requirePath = resolvedPath =>
-    (requirePathMem[resolvedPath] || (requirePathMem[resolvedPath] = require(resolvedPath)));
+    (requirePathMem[resolvedPath] || (requirePathMem[resolvedPath] = requireSafe(resolvedPath)));
+
+let requireSafe = resolvedPath => {
+    try {
+        return require(resolvedPath);
+    } catch (e) {
+        throw `js file not found: ${resolvedPath}`;
+    }
+};
 
 let docFromFile = (dir, inPath, flags) => {
     const MarkdownDoc = require('./MarkdownDoc');
@@ -35,7 +43,7 @@ let docFromFile = (dir, inPath, flags) => {
         case '.md':
         default:
             let contents = readFile(resolvedPath);
-            return new MarkdownDoc(dir, contents, flags )
+            return new MarkdownDoc(dir, contents, flags)
     }
 };
 

@@ -8,7 +8,7 @@ class MarkdownDoc {
     };
 
     generate() {
-        let substituted = this.contents.replace(/[^!]!example\[(.*)\]/g, (_, paramsStr) => {
+        let substituted = this.contents.replace(/(?<!!)!example\[(.*)\]/g, (_, paramsStr) => {
             let subsitutedParamsStr = paramsStr.replace(/\[([0-9]*)\]/g, (match, number) => (this.flags[number] || match));
             let [inPath, ...flags] = subsitutedParamsStr.split(' ');
             return generator.docFromFile(this.dir, inPath, flags).generate();

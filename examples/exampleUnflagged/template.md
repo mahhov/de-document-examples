@@ -1,3 +1,3 @@
 ## Less than 3
 
-!example[arrays.js]
+!example[lessThan3.js]

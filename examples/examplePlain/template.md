@@ -1,19 +1,19 @@
 ## Double
 
-!example[arrays.js whatIsThis]
+!example[doubler.js whatIsThis]
 
 ### Given
 
 let's say we have an array such as:
 
-!example[arrays.js given]
+!example[doubler.js given]
 
 ### When we do a map
 
 let's say we do a map
 
-!example[arrays.js double]
+!example[doubler.js double]
 
 ### Then we get
 
-!example[arrays.js doubleThen]
+!example[doubler.js doubleThen]

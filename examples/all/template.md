@@ -2,6 +2,12 @@
 
 Automatically update markdown documentation with examples.
 
+# Setup
+
+`npm i -g de-document-examples`
+
+`document path/template.md path/readme.md`
+
 # Markdown Syntax Summary
 
 ## basic js snippet
@@ -12,7 +18,7 @@ e.g. `!!example[case1.js given]`
 
 paths are relative unless beginning with a `/`
 
-## default flags
+## omitting flags
 
 `!!example[path/fileName.js]`
 
@@ -100,7 +106,7 @@ module.exports = {
  
 ### the `then` flag
  
-the `then` flag is special, in that if it's missing in the `.js` file, but accessed in the markdown, then documenter will attempt to default it to as `then: {obj: when.func(given.func())}`
+the `then` flag is special, in that if it's missing in the `.js` file, but accessed in the markdown, then documenter will attempt to default it as `then: {obj: when.func(given.func())}`
 
 # Example 1 - using `!!example[.js flag]` syntax
 

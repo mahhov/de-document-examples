@@ -1,77 +1,258 @@
-# de-document-examples
+# Overview
 
-Automatically insert and updating examples in your markdown.
+Automatically update markdown documentation with examples.
 
-# installation
+fl# Markdown Syntax Summary
 
-`npm install -save-dev de-document-examples`
+## basic js snippet
 
-# usage overview
+`!example[path/fileName.js flag]`
 
-1. create a template markdown file
+e.g. `!example[case1.js given]`
 
-2. where you want to include an example in your markdown, add the following `!example[Array] pathToMyExample/myExample.js`
-    - paths can be relative to your template markdown (e.g. `./myExample.js`)
-    - or absolute (e.g. `/users/my-name/my-documents/my-examples/myExample.js`)
+paths are relative unless beginning with a `/`
 
-3. create your examples file
+## default flags
 
-4. run `node `
+`!example[path/fileName.js]`
 
-## example template markdown
+is a shorter equivilent to: 
+ 
+```
+## !example[path/fileName.js title]
 
-```markdown
-# my animal sentence project
+### Given
 
-this generates a sentence about animals
+!example[path/fileName.js given]
 
-# examples
+### When
 
-!example[Array] example.js
+!example[path/fileName.js when]
+
+### Then
+
+!example[path/fileName.js then]
+
 ```
 
-## example `example.js`
-```javascript
+if title is missing from `fileName.js`, the title line will be omitted from the generated doc
+
+## markdown snippet
+
+`!example[path/fileName.md]`
+
+will inject the result of recursively generating `fileName.md`
+
+## markdown paramaters
+
+```
+## case 1
+
+!example[path/fileName.md case1.js]
+```
+
+any words following the file will be passed in as parameters when generating `fileName.md`
+
+to use these paramaters, add `[paramaterIndex]` to your markdown file
+
+```
+## !example[[0] title]
+```
+
+## The `.js` example file
+
+the `.js` files used should include a `modules.export` of format
+
+```
+module.exports = {
+    functionExample: {func: () => {}, excludeReturn: true | false},
+    objectExample: {obj: {}},
+    textExample: {text: ''}
+};
+```
+
+### example `.js` example file
+
+```
 let given = () => {
-    let animals = ['dog', 'cat', 'mouse'];
-    animals[0] = 'alligator';
-    return animals;
+    let list = [1, 2, 3, 4];
+    return list;
 };
 
-let when = animals => {
-    let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
-    return sentence;
+let quadruple = list => {
+    let result = list.map(num => num * 4);
+    return result;
 };
 
-module.exports = ['Animal Example #1', given, when];
+let add4 = list => {
+    let result = list.map(num => num + 4);
+    return result;
+};
+
+module.exports = {
+    description: {text: 'multiplies by 4 and adds 4 to each element of an array'},
+    given: {func: given, excludeReturn: true},
+    step1: {func: quadruple, excludeReturn: true},
+    step2: {func: add4, excludeReturn: true},
+    final: {obj: add4(quadruple(given()))}
+};
+ ```
+ 
+### the `then` flag
+ 
+the `then` flag is special, in that if it's missing in the `.js` file, but accessed in the markdown, then documenter will attempt to default it to as `then: {obj: when.func(given.func())}`
+
+# Example 1 - using `!example[.js flag]` syntax
+
+[example .js](../examplePlain/doubler.js)
+
+[template .md](../examplePlain/template.md)
+
+## Double
+
+this is a simple exampe
+
+### Given
+
+let's say we have an array such as:
+
 ```
-## the generated markdown
+    let list = [1, 2, 3, 4];
+```
 
-```markdown
-# my animal sentence project
+### When we do a map
 
-this generates a sentence about animals
+let's say we do a map
 
-# examples
+```
+    let result = list.map(num => num * 2);
+```
 
-## Animal Example #1
+### Then we get
+
+```
+[
+  2,
+  4,
+  6,
+  8
+]
+```
+
+
+# Example 2 - using `!example[.js]` syntax
+
+[example .js](../exampleUnflagged/lessThan3.js)
+
+[template .md](../exampleUnflagged/template.md)
+
+## Less than 3
 
 ### Given
 
 ```
-    let animals = ['dog', 'cat', 'mouse'];
-    animals[0] = 'alligator';
+    let list = [1, 2, 3, 4];
 ```
 
-### When
+### when
 
 ```
-    let sentence = `the ${animals[0]} watched the ${animals[1]} chase the ${animals[2]}`;
+    let result = list.filter(num => num < 3);
 ```
 
-### Then
+### then
 
 ```
-"the alligator watched the cat chase the mouse"
+[
+  1,
+  2
+]
 ```
+
+
+
+
+# Example 3 - using `!example[.md paramater]` syntax
+
+[first example .js](../exampleUnflagged/process1.js)
+
+[second example .js](../exampleUnflagged/process2.js)
+
+[template .md](../exampleUnflagged/template.md)
+
+[child template .md](../exampleUnflagged/templateChild.md)
+
+# Injectable, Reusable, & Paramterized Markdowns
+
+## Case 1
+
+### Description
+
+multiplies by 3 and adds 10 to each element of an array
+
+### Given
+
 ```
+    let list = [1, 2, 3, 4];
+```
+
+### First we
+
+```
+    let result = list.map(num => num * 3);
+```
+
+### Then we
+
+```
+    let result = list.map(num => num + 10);
+```
+
+### And we get
+
+```
+[
+  13,
+  16,
+  19,
+  22
+]
+```
+
+
+## Case 2, reusing same template
+
+### Description
+
+multiplies by 4 and adds 4 to each element of an array
+
+### Given
+
+```
+    let list = [1, 2, 3, 4];
+```
+
+### First we
+
+```
+    let result = list.map(num => num * 4);
+```
+
+### Then we
+
+```
+    let result = list.map(num => num + 4);
+```
+
+### And we get
+
+```
+[
+  8,
+  12,
+  16,
+  20
+]
+```
+
+

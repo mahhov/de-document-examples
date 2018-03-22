@@ -55,12 +55,13 @@ let docFromFile = (dir, inPath, flags) => {
     }
 };
 
-let generate = (fileIn, fileOut) => {
+let generate = (fileIn, fileOut, excludeSig) => {
     let fileInDir = path.dirname(fileIn);
     let fileName = path.basename(fileIn);
     let doc = docFromFile(fileInDir, fileName, []);
     let generated = doc.generate();
-    writeFile(fileOut, `${generated}\n\n<br><br><sub><sub>${signature}</sub></sub>`);
+    let footer = excludeSig ? '' : `\n\n<br><br><sub><sub>${signature}</sub></sub>`;
+    writeFile(fileOut, `${generated}${footer}`);
 };
 
 module.exports = {docFromFile, generate};

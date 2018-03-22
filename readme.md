@@ -2,7 +2,7 @@
 
 Automatically update markdown documentation with examples.
 
-fl# Markdown Syntax Summary
+# Markdown Syntax Summary
 
 ## basic js snippet
 

@@ -2,7 +2,9 @@
   "name": "de-document-examples",
   "version": "0.0.1",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish"
+  },
   "bin": {
     "document": "src/index.js"
   },

@@ -114,9 +114,9 @@ the `then` flag is special, in that if it's missing in the `.js` file, but acces
 
 # Example 1 - using `!example[.js flag]` syntax
 
-[example .js](../examplePlain/doubler.js)
+[example .js](examples/examplePlain/doubler.js)
 
-[template .md](../examplePlain/template.md)
+[template .md](examples/examplePlain/template.md)
 
 ## Double
 
@@ -152,9 +152,9 @@ let's say we do a map
 
 # Example 2 - using `!example[.js]` syntax
 
-[example .js](../exampleUnflagged/lessThan3.js)
+[example .js](examples/exampleUnflagged/lessThan3.js)
 
-[template .md](../exampleUnflagged/template.md)
+[template .md](examples/exampleUnflagged/template.md)
 
 ## Less than 3
 
@@ -184,13 +184,13 @@ let's say we do a map
 
 # Example 3 - using `!example[.md paramater]` syntax
 
-[first example .js](../exampleUnflagged/process1.js)
+[first example .js](examples/exampleInjectableTemplates/process1.js)
 
-[second example .js](../exampleUnflagged/process2.js)
+[second example .js](examples/exampleInjectableTemplates/process2.js)
 
-[template .md](../exampleUnflagged/template.md)
+[template .md](examples/exampleInjectableTemplates/template.md)
 
-[child template .md](../exampleUnflagged/templateChild.md)
+[child template .md](examples/exampleInjectableTemplates/templateChild.md)
 
 # Injectable, Reusable, & Paramterized Markdowns
 

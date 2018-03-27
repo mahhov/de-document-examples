@@ -139,3 +139,4 @@ the `then` flag is special, in that if it's missing in the `.js` file, but acces
 [child template .md](examples/exampleInjectableTemplates/templateChild.md)
 
 !example[../exampleInjectableTemplates/template.md]
+

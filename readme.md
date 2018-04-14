@@ -127,7 +127,7 @@ this is a simple exampe
 let's say we have an array such as:
 
 ```
-    let list = [1, 2, 3, 4];
+let list = [1, 2, 3, 4];
 ```
 
 ### When we do a map
@@ -135,7 +135,7 @@ let's say we have an array such as:
 let's say we do a map
 
 ```
-    let result = list.map(num => num * 2);
+let result = list.map(num => num * 2);
 ```
 
 ### Then we get
@@ -161,13 +161,13 @@ let's say we do a map
 ### Given
 
 ```
-    let list = [1, 2, 3, 4];
+let list = [1, 2, 3, 4];
 ```
 
 ### when
 
 ```
-    let result = list.filter(num => num < 3);
+let result = list.filter(num => num < 3);
 ```
 
 ### then
@@ -203,19 +203,19 @@ multiplies by 3 and adds 10 to each element of an array
 ### Given
 
 ```
-    let list = [1, 2, 3, 4];
+let list = [1, 2, 3, 4];
 ```
 
 ### First we
 
 ```
-    let result = list.map(num => num * 3);
+let result = list.map(num => num * 3);
 ```
 
 ### Then we
 
 ```
-    let result = list.map(num => num + 10);
+let result = list.map(num => num + 10);
 ```
 
 ### And we get
@@ -239,19 +239,19 @@ multiplies by 4 and adds 4 to each element of an array
 ### Given
 
 ```
-    let list = [1, 2, 3, 4];
+let list = [1, 2, 3, 4];
 ```
 
 ### First we
 
 ```
-    let result = list.map(num => num * 4);
+let result = list.map(num => num * 4);
 ```
 
 ### Then we
 
 ```
-    let result = list.map(num => num + 4);
+let result = list.map(num => num + 4);
 ```
 
 ### And we get

@@ -20,7 +20,9 @@ class JavascriptDoc {
         if (snippetData.func) {
             let funcString = snippetData.func.toString();
             let regex = snippetData.excludeReturn ? /{\n*((.|\s)*)\n\s*\breturn\b(.|\s)*}/ : /{\n*((.|\s)*)\n\s*}/;
-            return JavascriptDoc.codeWrap(funcString.match(regex)[1]);
+            let funcInner = funcString.match(regex)[1];
+            let unindentedFuncInner = JavascriptDoc.unindent(funcInner);
+            return JavascriptDoc.codeWrap(unindentedFuncInner);
         } else if (snippetData.obj)
             return JavascriptDoc.codeWrap(JSON.stringify(snippetData.obj, null, 2));
         else if (snippetData.text)
@@ -31,6 +33,10 @@ class JavascriptDoc {
 
     static  codeWrap(code) {
         return `\`\`\`\n${code}\n\`\`\``;
+    }
+
+    static unindent(string) {
+        return string.replace(/^(\t| {4})/gm, () => ''); // todo paramaterize 4
     }
 }
 

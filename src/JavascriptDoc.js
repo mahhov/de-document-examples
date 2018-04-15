@@ -19,8 +19,10 @@ class JavascriptDoc {
     static generateSnippet(snippetData) {
         if (snippetData.func) {
             let funcString = snippetData.func.toString();
-            let regex = snippetData.excludeReturn ? /(\((.|\s)*\)|=>)(.|\s)*{\n*((.|\s)*)\n\s*\breturn\b(.|\s)*}/ : /(\((.|\s)*\)|=>)(.|\s)*{\n*((.|\s)*)\n\s*}/;
-            let funcInner = funcString.match(regex)[4];
+            let preBrace = /(\([\w\s,[\]{}$]*\)|=>)(=>|\s)*/;
+            let inBrace = snippetData.excludeReturn ? /{\n*((.|\s)*)\n\s*\breturn\b(.|\s)*}/ : /{\n*((.|\s)*)\n\s*}/;
+            let regex = new RegExp(preBrace.source + inBrace.source);
+            let funcInner = funcString.match(regex)[3];
             let unindentedFuncInner = JavascriptDoc.unindent(funcInner);
             return JavascriptDoc.codeWrap(unindentedFuncInner);
         } else if (snippetData.obj)

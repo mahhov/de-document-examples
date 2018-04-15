@@ -1,6 +1,6 @@
 {
   "name": "de-document-examples",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "scripts": {
     "postversion": "git push && git push --tags && npm publish"

@@ -3,7 +3,8 @@
   "version": "0.0.9",
   "description": "",
   "scripts": {
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "readme": "node src/index.js examples/readme/template.md readme.md"
   },
   "bin": {
     "document": "src/index.js"

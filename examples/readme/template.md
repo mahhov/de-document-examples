@@ -69,6 +69,15 @@ to use these paramaters, add `[paramaterIndex]` to your markdown file
 ## !!example[[0] title]
 ```
 
+## other file types
+
+other files will default to being processed as markdown files. effectively, their contents will be inserted without the special processing that is applied to `.js` files. if the same behavior is desired for a `.js` file, append an `_` when specifying their file names in the example tag
+
+```
+!!example[path/fileName.html]
+!!example[path/fileName.js_]
+```
+
 ## The `.js` example file
 
 the `.js` files used should include a `modules.export` of format
@@ -140,3 +149,10 @@ the `then` flag is special, in that if it's missing in the `.js` file, but acces
 
 !example[../exampleInjectableTemplates/template.md]
 
+# Example 4 - using `!!example[.js_]` syntax
+
+[example .js](examples/exampleUnderscore/add1.js)
+
+[template .md](examples/exampleUnderscore/template.md)
+
+!example[../exampleUnderscore/template.md]

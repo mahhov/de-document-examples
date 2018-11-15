@@ -41,9 +41,13 @@ let docFromFile = (dir, inPath, flags) => {
     const JavascriptDoc = require('./JavascriptDoc');
     const JavascriptUnflaggedDoc = require('./JavascriptUnflaggedDoc');
 
+    let ext = path.extname(inPath);
+    if (ext === '.js_')
+        inPath = inPath.slice(0,-1);
+
     let resolvedPath = resolvePath(dir, inPath);
 
-    switch (path.extname(inPath)) {
+    switch (ext) {
         case '.js':
             let requiredPath = requirePath(resolvedPath);
             return !flags.length && new JavascriptUnflaggedDoc(requiredPath) || new JavascriptDoc(requiredPath, flags);
